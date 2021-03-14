@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:retirement_plan/formFields/formPage.dart';
 import 'package:retirement_plan/widgets/blog_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../router.dart';
 
@@ -11,12 +12,20 @@ int x = 0;
 
 
 class ChoosePage extends StatefulWidget {
-
   @override
   _ChoosePageState createState() => _ChoosePageState();
 }
 
 class _ChoosePageState extends State<ChoosePage> {
+double result = 0.00;
+  getResult() async {
+
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      result = pref.getDouble("result");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData data = MediaQuery.of(context);
@@ -156,6 +165,8 @@ class _ChoosePageState extends State<ChoosePage> {
                 }
               ),
             ),
+            SizedBox(height: 20,),
+
           ],
         ),
       ),

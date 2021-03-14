@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:retirement_plan/widgets/choose_page.dart';
 import 'package:retirement_plan/widgets/login_page.dart';
+import 'package:retirement_plan/widgets/welcome_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Load extends StatefulWidget {
@@ -26,7 +27,7 @@ class _LoadState extends State<Load> {
     }
     else {
       Navigator.pushReplacement(context, MaterialPageRoute(
-          builder: (context) => LoginPage())
+          builder: (context) => WelcomePage())
       );
     }
   }

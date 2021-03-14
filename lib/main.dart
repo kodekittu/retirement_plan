@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:retirement_plan/load_page.dart';
 
 import 'router.dart';
 
@@ -10,7 +8,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'we care for you',
       theme: ThemeData(
       //  brightness: Brightness.dark,
         cursorColor: Colors.pink,

@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:retirement_plan/widgets/choose_page.dart';
+import 'package:retirement_plan/widgets/login_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'formPage.dart';
 
@@ -98,7 +100,7 @@ class _ResultPageState extends State<ResultPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: 10.0),
+              const SizedBox(height: 50.0),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Text( "Your Result for Retirement planning",
@@ -114,28 +116,61 @@ class _ResultPageState extends State<ResultPage> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(height: 10.0),
-            ],
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 50.0),
-              child: MaterialButton(
-                elevation: 0,
-                padding: const EdgeInsets.all(16.0),
-                shape: CircleBorder(),
-                onPressed: () => Navigator.push(context, MaterialPageRoute(
-                    builder: (_) => ChoosePage()
-                )),
-                  color: Colors.grey.shade800,
-                child: Icon(
-                  Icons.clear,
-                  color: primary,
+              const SizedBox(height: 60),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 50.0),
+                  child: MaterialButton(
+                    elevation: 0,
+                    padding: const EdgeInsets.all(16.0),
+                    shape: CircleBorder(),
+                    onPressed: () async {
+                      SharedPreferences pref = await SharedPreferences.getInstance();
+                      pref.setDouble("result", res);
+                      showToast("Your result is saved!");
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (_) => ChoosePage()
+                      ));
+                    },
+                    color: Colors.greenAccent,
+                    child: Icon(
+                      Icons.check_outlined,
+                      color: primary,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          )
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 50.0),
+                  child: MaterialButton(
+                    elevation: 0,
+                    padding: const EdgeInsets.all(16.0),
+                    shape: CircleBorder(),
+                    onPressed: () {
+                      showToast("OK, Try again!");
+                      Navigator.pushReplacement(context, MaterialPageRoute(
+                          builder: (_) => ChoosePage()
+                      ));
+                    },
+                    color: Colors.grey.shade800,
+                    child: Icon(
+                      Icons.clear,
+                      color: primary,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+
+    ]),
         ],
       ),
     );

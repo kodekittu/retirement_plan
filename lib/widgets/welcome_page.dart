@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../router.dart';
 
@@ -22,6 +23,7 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     MediaQueryData data = MediaQuery.of(context);
     return Scaffold(
+        resizeToAvoidBottomInset : false,
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -77,16 +79,97 @@ class _WelcomePageState extends State<WelcomePage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
-                    onPressed: () => Navigator.pushNamed(context, loginRoute),
+                    onPressed: () {
+                      _dialog(context);
+             //          Navigator.pushNamed(context, loginRoute),
+                    }
                   ),
                 ]),
             ),],
               ),
             ),
-                  SizedBox(height:data.size.height * 0.2,)
             ]
           ),
         )
        );
   }
+
 }
+
+_dialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return YourName();
+    },
+  );
+}
+class YourName extends StatefulWidget {
+  @override
+  _YourNameState createState() => _YourNameState();
+}
+
+class _YourNameState extends State<YourName> {
+  final name = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return  Center(
+      child: Dialog(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        child: Container(
+          padding: EdgeInsets.only(right: 16.0),
+          height: 150,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                  bottomRight: Radius.circular(10))),
+          child: Row(
+            children: <Widget>[
+              SizedBox(width: 20.0),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Flexible(
+                      child: Text(
+                          "Hey, What's your name?"),
+                    ),
+                    SizedBox(height: 10.0),
+                    Expanded(
+                      child:TextField(
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        controller: name,
+                      ),
+                    ),
+                    Center(
+                      child: Expanded(
+                        child: RaisedButton(
+                          child: Text("GO!!"),
+                          color: Colors.green,
+                          colorBrightness: Brightness.dark,
+                          onPressed: () async {
+                            SharedPreferences pref = await SharedPreferences.getInstance();
+                            pref.setString("name", name.text);
+                            Navigator.pushNamed(context, loginRoute);
+                          },
+                //       shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(20.0)),
+                       ),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
