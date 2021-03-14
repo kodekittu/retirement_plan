@@ -15,6 +15,12 @@
 
 # Mobile App APK LINK -  https://drive.google.com/file/d/1RokzfUky0frSPrAUrwr7OgxBSP8FWLKx/view?usp=sharing
 
+# Technology
+    Flutter
+    Dart language
+    Firebase
+    http package
+    
 
 ![WhatsApp Image 2021-03-14 at 3 55 14 PM (1)](https://user-images.githubusercontent.com/43681972/111072604-82d7ac80-8498-11eb-9e38-b8e889a073b9.jpeg)
 
