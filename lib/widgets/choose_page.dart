@@ -3,9 +3,11 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:retirement_plan/formFields/formPage.dart';
-import 'package:retirement_plan/formFields/result.dart';
+import 'package:retirement_plan/widgets/blog_page.dart';
 
 import '../router.dart';
+
+int x = 0;
 
 
 class ChoosePage extends StatefulWidget {
@@ -67,7 +69,12 @@ class _ChoosePageState extends State<ChoosePage> {
                       ),
                     ),
                     onPressed: () {
-                 //     createAlertDialog1(context);
+                      setState(() {
+                        x =0;
+                      });
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (_) => BlogPage()
+                      ));
                     }
                 ),
               ),
@@ -82,7 +89,12 @@ class _ChoosePageState extends State<ChoosePage> {
                       ),
                     ),
                     onPressed: () {
-                      //     createAlertDialog1(context);
+                      setState(() {
+                        x =1;
+                      });
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (_) => BlogPage()
+                      ));
                     }
                 ),
               ),
@@ -96,7 +108,12 @@ class _ChoosePageState extends State<ChoosePage> {
                       ),
                     ),
                     onPressed: () {
-                      //     createAlertDialog1(context);
+                      setState(() {
+                        x =2;
+                      });
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (_) => BlogPage()
+                      ));
                     }
                 ),
               ),
@@ -110,7 +127,12 @@ class _ChoosePageState extends State<ChoosePage> {
                       ),
                     ),
                     onPressed: () {
-                      //     createAlertDialog1(context);
+                      setState(() {
+                        x =3;
+                      });
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (_) => BlogPage()
+                      ));
                     }
                 ),
               ),
@@ -127,9 +149,11 @@ class _ChoosePageState extends State<ChoosePage> {
                       fontSize: 20,
                     ),
                   ),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(
                       builder: (_) => QuizPage()
-                  ))
+                  ));
+                }
               ),
             ),
           ],

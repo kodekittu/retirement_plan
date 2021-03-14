@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:retirement_plan/widgets/choose_page.dart';
+
+final List<String> topic = ["GOLD", "Mutual Funds", "Equity", "Stocks"];
+
+final List<String> para = ["Lorem Ipsum is simply dummy text of the printing and typesetting industry. \nLorem Ipsum has been the industry's standard dummy text ever since the 1500s. \nWhen an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting. Remaining essen \nLorem Ipsum has been the industry's standard dummy text ever since the 1500stially unchanged. It was popularised in the 1960s simply dummy text printing standard dummy text.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer \nLorem Ipsum has been the industry's standard dummy text ever since the 1500s took a galley of type and scrambled it to make a type speci \nLorem Ipsum has been the industry's standard dummy text ever since the 1500smen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."];
+
+
 
 class BlogPage extends StatefulWidget {
+
   @override
   _BlogPageState createState() => _BlogPageState();
 }
@@ -11,10 +19,7 @@ class _BlogPageState extends State<BlogPage> {
     MediaQueryData data = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Read the Story'),
-        actions: <Widget>[
-          IconButton(icon: Icon(Icons.share), onPressed: (){},)
-        ],
+        title: Text(topic[x]),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -28,11 +33,11 @@ class _BlogPageState extends State<BlogPage> {
                     alignment: Alignment.center,
                   ),
                 ),
-                height: data.size.height * .5,
+                height: data.size.height * .25,
                 width: data.size.height * .6,
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(16.0, 250.0,16.0,16.0),
+                margin: EdgeInsets.fromLTRB(16.0, 100.0,16.0,16.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(5.0)
@@ -41,19 +46,9 @@ class _BlogPageState extends State<BlogPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text("Fighting for justice against acid attack. Need a lawyer to support my issue.", style: Theme.of(context).textTheme.title,),
                     SizedBox(height: 10.0),
-                    Text("Feb 21, 2020 By Sad Girl"),
-                    SizedBox(height: 10.0),
-                    Divider(),
-                    SizedBox(height: 10.0,),
-                    Row(children: <Widget>[
-                      Icon(Icons.comment),
-                      SizedBox(width: 5.0,),
-                      Text("25"),
-                    ],),
-                    SizedBox(height: 10.0,),
-                    Text("Few days ago while walking on Gandhinagar road, few guys started came out of nowhere and started harrsing me. I stood strong and opposed them.Next moment, they threw acid on my face. I am badly burnt and hospitalized for many days. I filed case against them.  I need help to fight against those people who threw acid on me so that this thing doesnt happen to any other girl. I want people to support me and guide me through this hardest situation. I am tired of roaming around courts and asking lawyers to fight for my issue. Basically, I want a lawyer to support for my justice.", textAlign: TextAlign.justify,),
+
+                    Text(para[0]),
                     SizedBox(height: 10.0),
                   ],
                 ),
