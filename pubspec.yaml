@@ -1,0 +1,38 @@
+name: retirement_plan
+description: A new Flutter application.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  font_awesome_flutter: ^8.7.0
+  charts_flutter: ^0.9.0
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+  flutter_custom_clippers: ^1.1.2
+  http: ^0.12.1
+  fluttertoast: ^7.1.6
+  shared_preferences: ^0.5.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter:
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/logo.png
+    - assets/images/poster.jpg
+    - assets/images/b4.jpg
+    - assets/images/b5.jpg
+    - assets/images/p1.jpg
+
